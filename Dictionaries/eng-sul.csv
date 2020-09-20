@@ -1,0 +1,8 @@
+# Format: 
+# language1,language2
+# l1_word,l2_word,POS,definition
+
+English,Sulxantilo
+language,xantilo,noun,"a means of communication"
+language,sulxantilo,noun,"the means of communication of gods"
+# The above upon import would relate the two words with the single word "language"

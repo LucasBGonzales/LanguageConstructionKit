@@ -1,0 +1,65 @@
+<?xml version="1.0" standalone="yes"?>
+
+<language name = "English">
+
+	<word name = "tear">
+		<definition>
+			<part_of_speech
+				part="@parts_of_speech/noun"/>
+			<description>This fluid appearing in or flowing from the eye as the result of emotion, especially grief</description>
+		</definition>
+		
+		<definition>
+			<part_of_speech
+				part="@parts_of_speech/noun"/>
+			<description>A rent or fissure.</description>
+		</definition>
+		
+		<definition>
+			<part_of_speech
+				part="@parts_of_speech/verb"/>
+			<description>To become torn.</description>
+		</definition>
+		
+		<translation
+			language="Ancient Language"
+			word="lac"/>
+	</word>
+
+	<word name = "fissure">
+		<definition>
+			<part_of_speech
+				part="@parts_of_speech/noun"/>
+			<description>A narrow opening produced by cleavage or separation of parts.</description>
+		</definition>
+		
+		<definition>
+			<part_of_speech
+				part="@parts_of_speech/verb"/>
+			<description>To make fissures in; cleave; split.</description>
+		</definition>
+		
+		<translation
+			language="Ancient Language"
+			word="lac"/>
+	</word>
+
+	<word name = "ice">
+		<definition>
+			<part_of_speech
+				part="@parts_of_speech/noun"/>
+			<description>The solid form of water;verb to cover with ice</description>
+		</definition>
+		
+		<translation
+			language="Ancient Language"
+			word="vjis"/>
+	</word>
+	
+	<root
+		name="a, an"
+		type="@root_types/prefix"
+		definition="without, not"
+		/>
+	
+</language>

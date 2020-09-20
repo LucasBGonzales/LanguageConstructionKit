@@ -1,0 +1,47 @@
+<?xml version = "1.0"?>
+<parts_of_speech>
+	<part_of_speech name="verb">
+		<title>Verb</title>
+		<function>Action or state.</function>
+	</part_of_speech>
+
+	<part_of_speech name="noun">
+		<title>Noun</title>
+		<function>Thing or person.</function>
+	</part_of_speech>
+
+	<part_of_speech name="adjective">
+		<title>Adjective</title>
+		<function>Describes a noun.</function>
+	</part_of_speech>
+
+	<part_of_speech name="determiner">
+		<title>Determiner</title>
+		<function>Limits or "determins" a noun.</function>
+	</part_of_speech>
+
+	<part_of_speech name="adverb">
+		<title>Adverb</title>
+		<function>Describes a verb, adjective, or adverb.</function>
+	</part_of_speech>
+
+	<part_of_speech name="pronoun">
+		<title>Pronoun</title>
+		<function>Replaces a noun.</function>
+	</part_of_speech>
+
+	<part_of_speech name="preposition">
+		<title>Preposition</title>
+		<function>Links a noun to another word.</function>
+	</part_of_speech>
+
+	<part_of_speech name="conjunction">
+		<title>Conjunction</title>
+		<function>Joins clauses, sentences or words.</function>
+	</part_of_speech>
+
+	<part_of_speech name="interjection">
+		<title>Interjection</title>
+		<function>Short exclamation, sometimes inserted intoa  sentence.</function>
+	</part_of_speech>
+</parts_of_speech>

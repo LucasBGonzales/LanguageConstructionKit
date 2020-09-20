@@ -1,0 +1,31 @@
+Tools
+• Translator
+	• Type an entry into the box. When user clicks 'translate', the program will attempt to translate the entry. Will search for words in database that mark the entry as a translation, then double-check the usage (verb, noun, etc...). If multiple potential entries are found, user will be prompted to pick the correct one. If no entries are found, the use is prompted to point to a word, create a new one, or ignore it.
+	• Grammatical re-arrangement? (noun verb adjective --> adjective noun verb ?)
+	• 
+• Word Tool
+	• Word Search
+			• Type in a word into the search bar to find a word. Produce a list of suggestions as user types.
+				• Suggestion Example: "Word	Language Part-Of-Speech Word/Root"
+			• Refine search by:
+				• Language
+				• Word
+				• Root/Prefix/Suffix
+	• Editor 
+		• Word
+		• Definitions
+			• LIST Definitions (Represent with [POS Beginning part of the descript...])
+			• BTN New
+			• BTN Update
+			• BTN Delete
+			• Part-of-speech
+			• Description
+		• Translations
+			• LIST Translations
+			• BTN New
+			• BTN Update
+			• BTN Delete
+		• BTN Save
+		• BTN Create New
+		• BTN Delete
+• Word Generator
