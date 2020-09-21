@@ -47,7 +47,7 @@ public class FileHandler {
 		try {
 			// Get Directory
 			dir_languages = new File(Translator.class.getProtectionDomain().getCodeSource().getLocation().toURI())
-					.getAbsolutePath();
+				.getAbsolutePath();
 
 			// Check for bin, necessary when running debug from Eclipse. Remove
 			// it.
@@ -61,7 +61,7 @@ public class FileHandler {
 
 			// Get Directory
 			dir_xml = new File(Translator.class.getProtectionDomain().getCodeSource().getLocation().toURI())
-					.getAbsolutePath();
+				.getAbsolutePath();
 
 			// Check for bin, necessary when running debug from Eclipse. Remove
 			// it.
@@ -110,10 +110,9 @@ public class FileHandler {
 
 
 	/**
-	 * Retrieves the directory for the xml file that represents the given
-	 * language. Does so by comparing {@code language_name} with the
-	 * string in the name attribute of the Language element within the
-	 * language XMLs. Case sensitive.
+	 * Retrieves the directory for the xml file that represents the given language.
+	 * Does so by comparing {@code language_name} with the string in the name
+	 * attribute of the Language element within the language XMLs. Case sensitive.
 	 * 
 	 * <p>
 	 * Returns {@code null} if the language could not be found.
@@ -152,8 +151,8 @@ public class FileHandler {
 
 
 	/**
-	 * XMLParser handles everything that has to do with the XML files.
-	 * Loading, saving, etc.
+	 * XMLParser handles everything that has to do with the XML files. Loading,
+	 * saving, etc.
 	 * 
 	 * @author Lucas Gonzales "Krythos"
 	 *
@@ -179,8 +178,8 @@ public class FileHandler {
 
 
 		/**
-		 * Retrieves the name of the language from the XML located at the
-		 * given {@code File f}. Returns the name as a string.
+		 * Retrieves the name of the language from the XML located at the given
+		 * {@code File f}. Returns the name as a string.
 		 * 
 		 * @param f The file to search. Must be an XML.
 		 * @return {@code String} The name of the language.
@@ -210,8 +209,7 @@ public class FileHandler {
 		 * Parses the language XML file from the given {@code File}.
 		 * 
 		 * @param f {@code File} to be parsed.
-		 * @return {@code Language} that contains the information from the
-		 *         given file.
+		 * @return {@code Language} that contains the information from the given file.
 		 */
 		public static Language parseLanguage(File f) {
 			try {
@@ -304,12 +302,12 @@ public class FileHandler {
 
 
 		/**
-		 * Parses the given {@code File} as the Parts of Speech xml file, and
-		 * returns it as a {@code List<PartOfSpeech>}.
+		 * Parses the given {@code File} as the Parts of Speech xml file, and returns it
+		 * as a {@code List<PartOfSpeech>}.
 		 * 
 		 * @param f {@code File} to be parsed.
-		 * @return {@code List<PartOfSpeech>} that contains the information
-		 *         from the given file.
+		 * @return {@code List<PartOfSpeech>} that contains the information from the
+		 *         given file.
 		 */
 		public static List<PartOfSpeech> parsePartsOfSpeech(File f) {
 			try {
@@ -359,8 +357,7 @@ public class FileHandler {
 		 * 
 		 * @param language
 		 * @param directory
-		 * @return {@code true} if successfully saved, {@code false} if save
-		 *         failed.
+		 * @return {@code true} if successfully saved, {@code false} if save failed.
 		 */
 		public static boolean saveLanguage(Language language, String directory) {
 			Document dom;

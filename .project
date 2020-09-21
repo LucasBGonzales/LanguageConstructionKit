@@ -3,6 +3,7 @@
 	<name>Translator</name>
 	<comment></comment>
 	<projects>
+		<project>Utilities</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
