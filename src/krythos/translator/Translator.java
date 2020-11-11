@@ -1,7 +1,7 @@
 package krythos.translator;
 
 import krythos.translator.database.Database;
-import krythos.translator.gui.MainWindow;
+import krythos.translator.windows.MainWindow;
 
 public class Translator {
 

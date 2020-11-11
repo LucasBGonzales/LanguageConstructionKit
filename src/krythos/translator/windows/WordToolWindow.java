@@ -1,4 +1,4 @@
-package krythos.translator.gui;
+package krythos.translator.windows;
 
 import java.awt.Color;
 import java.awt.GridBagConstraints;
@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.BorderFactory;
@@ -33,6 +34,7 @@ import krythos.translator.language.Word;
 import krythos.translator.language.Word.Definition;
 import krythos.translator.language.Word.Translation;
 import krythos.util.logger.Log;
+import krythos.util.swing.DropSelection;
 
 public class WordToolWindow extends JInternalFrame implements KeyListener, ListSelectionListener, ActionListener {
 	private static final long serialVersionUID = -142191381966469757L;
@@ -42,6 +44,7 @@ public class WordToolWindow extends JInternalFrame implements KeyListener, ListS
 	private Word m_editingWord;
 
 	// Word Tool
+	private DropSelection m_dropSelection;
 	private JTextField m_txtSearchTool;
 	private JTextField m_txtWord;
 	private JButton m_btnNewWord;
@@ -117,8 +120,6 @@ public class WordToolWindow extends JInternalFrame implements KeyListener, ListS
 		m_txtSearchTool = new JTextField("Search Tool");
 		m_txtSearchTool.setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
 		m_txtSearchTool.addKeyListener(this);
-		// DropSelection ds = new DropSelection(m_txtSearchTool, this, new
-		// String[] { "hi", "hello", "hurricane", "seven", "sever" });
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		gbc.weightx = 0.5;
 		gbc.weighty = 1.0;
@@ -131,6 +132,23 @@ public class WordToolWindow extends JInternalFrame implements KeyListener, ListS
 		gbc.insets = new Insets(3, 3, 3, 3);
 		pnlWordTool.add(m_txtSearchTool, gbc);
 		gbc = new GridBagConstraints();
+
+		// Create DropSelection
+		m_dropSelection = new DropSelection(m_txtSearchTool, this);
+		Database db = Database.get();
+		List<String> lst_words = new ArrayList<String>();
+		for (String s : db.getLangaugeNames()) {
+			for (int i = 0; db.getLanguage(s).getWord(i) != null; i++)
+				lst_words.add((db.getLanguage(s).getWord(i).getWordAsString()) + " : " + s);
+		}
+		String[] words = new String[lst_words.size()];
+		for (int i = 0; i < words.length; i++)
+			words[i] = lst_words.get(i);
+		m_dropSelection.setDictionary(words);
+		m_dropSelection.addDropListener(e -> {
+			String[] arr_s = m_txtSearchTool.getText().split(" : ");
+			openWord(arr_s[0], arr_s[1]);
+		});
 
 
 		// Word
@@ -429,7 +447,7 @@ public class WordToolWindow extends JInternalFrame implements KeyListener, ListS
 		m_txtDefinitionDescription.setLineWrap(true);
 		m_txtDefinitionDescription.setWrapStyleWord(true);
 		m_txtDefinitionDescription.setBorder(BorderFactory.createCompoundBorder(
-				BorderFactory.createLineBorder(Color.GRAY, 1), BorderFactory.createEmptyBorder(2, 5, 2, 5)));
+			BorderFactory.createLineBorder(Color.GRAY, 1), BorderFactory.createEmptyBorder(2, 5, 2, 5)));
 		// BorderFactory.createLineBorder(Color.GRAY, 1));
 		gbc.fill = GridBagConstraints.BOTH;
 		gbc.anchor = GridBagConstraints.NORTH;
@@ -662,7 +680,7 @@ public class WordToolWindow extends JInternalFrame implements KeyListener, ListS
 		m_lstTranslations.clear();
 
 		// Word
-		m_txtWord.setText(w.getWord());
+		m_txtWord.setText(w.getWordAsString());
 
 		// Definitions
 		List<Definition> lstDef = w.getDefinitions();
@@ -674,7 +692,7 @@ public class WordToolWindow extends JInternalFrame implements KeyListener, ListS
 				append = "";
 			}
 			m_lstDefinitions.addElement("<html><b>" + def.getPartOfSpeech().getName() + "</b> "
-					+ def.getDefinition().substring(0, length) + append + "</html>");
+				+ def.getDefinition().substring(0, length) + append + "</html>");
 		}
 
 		// Translations
@@ -682,7 +700,8 @@ public class WordToolWindow extends JInternalFrame implements KeyListener, ListS
 		for (Translation tran : lstTrans)
 			m_lstTranslations.addElement("<html><b>" + tran.getLanguage() + "</b> " + tran.getString() + "</html>");
 	}
-	
+
+
 	public void openWord(String word, String language) {
 		m_cbxLanguage.setSelectedItem(language);
 		m_selectedLanguage = Database.get().getLanguage(language);

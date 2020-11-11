@@ -1,4 +1,4 @@
-package krythos.translator.gui;
+package krythos.translator.windows;
 
 import java.awt.Color;
 import java.awt.Component;

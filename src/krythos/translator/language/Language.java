@@ -43,7 +43,7 @@ public class Language {
 	 * @param word
 	 */
 	public void addWord(Word word) {
-		Word w = getWord(word.getWord());
+		Word w = getWord(word.getWordAsString());
 		if (w == null)
 			m_arr_lang_words.add(word);
 		else {
@@ -116,12 +116,12 @@ public class Language {
 			return false;
 
 		// Check word exists in language.
-		Word w = getWord(word.getWord());
+		Word w = getWord(word.getWordAsString());
 		if (w == null)
 			return false;
 
 		// Remove the old word, add new word.
-		removeWord(word.getWord());
+		removeWord(word.getWordAsString());
 		addWord(word);
 		return true;
 	}
@@ -139,7 +139,7 @@ public class Language {
 	 */
 	public boolean removeWord(String word) {
 		for (int i = 0; i < m_arr_lang_words.size(); i++)
-			if (m_arr_lang_words.get(i).getWord().toLowerCase().equals(word.toLowerCase())) {
+			if (m_arr_lang_words.get(i).getWordAsString().toLowerCase().equals(word.toLowerCase())) {
 				m_arr_lang_words.remove(i);
 				return true;
 			}
@@ -161,7 +161,7 @@ public class Language {
 	 */
 	public Word getWord(String word) {
 		for (Word w : m_arr_lang_words)
-			if (w.getWord().toLowerCase().equals(word.toLowerCase()))
+			if (w.getWordAsString().toLowerCase().equals(word.toLowerCase()))
 				return w.clone();
 
 		return null;

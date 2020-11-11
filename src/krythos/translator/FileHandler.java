@@ -379,7 +379,7 @@ public class FileHandler {
 					Word word = language.getWord(i_l);
 
 					Element eWord = dom.createElement(EL_WORD);
-					eWord.setAttribute(ATTR_WORD__NAME, word.getWord());
+					eWord.setAttribute(ATTR_WORD__NAME, word.getWordAsString());
 
 					// Parse Definitions of Words
 					for (int i_d = 0; word.getDefinition(i_d) != null; i_d++) {

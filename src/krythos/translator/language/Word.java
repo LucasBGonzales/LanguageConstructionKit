@@ -214,7 +214,7 @@ public class Word {
 	 * 
 	 * @return {@code String} word
 	 */
-	public String getWord() {
+	public String getWordAsString() {
 		return m_word;
 	}
 
