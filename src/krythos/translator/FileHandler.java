@@ -32,12 +32,18 @@ import krythos.translator.language.Word.Definition;
 import krythos.translator.language.Word.Translation;
 import krythos.util.file_search.FileSearch;
 import krythos.util.logger.Log;
+import krythos.util.misc.SystemUtils;
 
 public class FileHandler {
 	private static final String TAG = "FileHandler";
 	private static FileHandler m_instance;
 	private String dir_languages;
 	private String dir_xml;
+	final String S_BIN = SystemUtils.isWindows() ? "\\bin" : "/bin";
+	final String S_XML = SystemUtils.isWindows() ? "\\xml" : "/xml";
+	final String S_LANGUAGES = SystemUtils.isWindows() ? "\\Languages" : "/Languages";
+	final String S_PARTS_OF_SPEECH = (SystemUtils.isWindows() ? "\\" : "/") + "parts_of_speech.xml";
+	
 
 
 	public FileHandler() {
@@ -51,12 +57,12 @@ public class FileHandler {
 
 			// Check for bin, necessary when running debug from Eclipse. Remove
 			// it.
-			dir_languages.lastIndexOf("\\bin");
-			if (dir_languages.lastIndexOf("\\bin") == dir_languages.length() - 4)
+			dir_languages.lastIndexOf(S_BIN);
+			if (dir_languages.lastIndexOf(S_BIN) == dir_languages.length() - 4)
 				dir_languages = dir_languages.substring(0, dir_languages.length() - 4);
 
 			// Add Languages to directory.
-			dir_languages += "\\Languages";
+			dir_languages += S_LANGUAGES;
 
 
 			// Get Directory
@@ -65,12 +71,12 @@ public class FileHandler {
 
 			// Check for bin, necessary when running debug from Eclipse. Remove
 			// it.
-			dir_xml.lastIndexOf("\\bin");
-			if (dir_xml.lastIndexOf("\\bin") == dir_xml.length() - 4)
+			dir_xml.lastIndexOf(S_BIN);
+			if (dir_xml.lastIndexOf(S_BIN) == dir_xml.length() - 4)
 				dir_xml = dir_xml.substring(0, dir_xml.length() - 4);
 
 			// Add Languages to directory.
-			dir_xml += "\\xml";
+			dir_xml += S_XML;
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		}
@@ -142,7 +148,7 @@ public class FileHandler {
 	 * @return {@code String} XML file directory.
 	 */
 	public String getPartsOfSpeechDirectory() {
-		String dir = dir_xml + "\\parts_of_speech.xml";
+		String dir = dir_xml + S_PARTS_OF_SPEECH;
 		if ((new File(dir)).exists())
 			return dir;
 		else

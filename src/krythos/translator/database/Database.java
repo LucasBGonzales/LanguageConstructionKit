@@ -7,6 +7,7 @@ import java.util.List;
 import krythos.translator.FileHandler;
 import krythos.translator.language.Language;
 import krythos.translator.language.PartOfSpeech;
+import krythos.util.logger.Log;
 
 public class Database {
 	private static Database m_instance;
@@ -34,6 +35,7 @@ public class Database {
 
 	/**
 	 * Returns the PartOfSpeech that has the ID matching the given String.
+	 * 
 	 * @param str
 	 * @return
 	 */
@@ -46,11 +48,10 @@ public class Database {
 
 
 	/**
-	 * Attempts to add the given language to the database. Will not add
-	 * the language if the language already exists in the database.
-	 * If the addition is successful {@code true} is returned. If the
-	 * language already exists and is thus unsuccessful, {@code false} is
-	 * returned.
+	 * Attempts to add the given language to the database. Will not add the language
+	 * if the language already exists in the database. If the addition is successful
+	 * {@code true} is returned. If the language already exists and is thus
+	 * unsuccessful, {@code false} is returned.
 	 * 
 	 * @param language
 	 * @return
@@ -67,8 +68,8 @@ public class Database {
 
 
 	/**
-	 * Adds the passed PartOfSpeech to the database. Ignores duplicates
-	 * that satisfy PartOfSpeech.equals()
+	 * Adds the passed PartOfSpeech to the database. Ignores duplicates that satisfy
+	 * PartOfSpeech.equals()
 	 * 
 	 * @param pos
 	 */
@@ -82,8 +83,7 @@ public class Database {
 
 
 	/**
-	 * Return a {@code String} array of the names for all loaded
-	 * languages.
+	 * Return a {@code String} array of the names for all loaded languages.
 	 * 
 	 * @return {@code String} array of language names.
 	 */
@@ -98,9 +98,8 @@ public class Database {
 
 
 	/**
-	 * Will search the languages array for the specified language. If
-	 * found, that is returned. If not found, null is returned.
-	 * Case-sensitive.
+	 * Will search the languages array for the specified language. If found, that is
+	 * returned. If not found, null is returned. Case-sensitive.
 	 * 
 	 * @param language The {@code String} to compare language names to.
 	 * @return {@code LanguageDB} if found, else {@code null}.
@@ -119,8 +118,7 @@ public class Database {
 
 
 	/**
-	 * Loads all languages in the Languages directory and adds them to the
-	 * database.
+	 * Loads all languages in the Languages directory and adds them to the database.
 	 */
 	public void loadAllLanguages() {
 		String[] arr_dir = FileHandler.get().getLanguageDirectories();
@@ -133,12 +131,16 @@ public class Database {
 
 
 	/**
-	 * Loads the parts of speech xml and adds the Parts of Speech to the
-	 * database according to addPartOfSpeech().
+	 * Loads the parts of speech xml and adds the Parts of Speech to the database
+	 * according to addPartOfSpeech().
 	 */
 	public void loadPartsOfSpeech() {
-		List<PartOfSpeech> lst = FileHandler.XMLParser
-				.parsePartsOfSpeech(new File(FileHandler.get().getPartsOfSpeechDirectory()));
+		List<PartOfSpeech> lst = null;
+		try {
+			lst = FileHandler.XMLParser.parsePartsOfSpeech(new File(FileHandler.get().getPartsOfSpeechDirectory()));
+		} catch (NullPointerException e) {
+			Log.error(e.getMessage());
+		}
 
 		for (PartOfSpeech pos : lst)
 			addPartOfSpeech(pos);

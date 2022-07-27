@@ -26,10 +26,9 @@ import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
 
 import krythos.translator.database.Database;
-import krythos.translator.language.Word;
 import krythos.translator.language.Word.Translation;
 import krythos.util.abstract_interfaces.AbsMouseListener;
-import krythos.util.swing.Dialogs;
+import krythos.util.swing.KDialogs;
 
 @SuppressWarnings("serial")
 public class TranslatorTool extends JInternalFrame {
@@ -202,7 +201,7 @@ public class TranslatorTool extends JInternalFrame {
 
 
 	private void getTextFromUser() {
-		String entry = Dialogs.showInputAreaDialog(null, "Enter the text to translate.", "");
+		String entry = KDialogs.showInputAreaDialog(null, "Enter the text to translate.", "");
 		updateText(entry);
 	}
 
@@ -227,7 +226,7 @@ public class TranslatorTool extends JInternalFrame {
 			break;
 		case TAG_L2_MULTI_TRANSLATION:
 			// TODO Update text with selected word.
-			
+
 			// Get translations, get the words.
 			Object[] arr = Database.get().getLanguage(m_lang1).getWord(word).getTranslations().toArray();
 			for (int i = 0; i < arr.length; i++)
@@ -322,8 +321,8 @@ public class TranslatorTool extends JInternalFrame {
 			else if (arr_t.size() == 1)
 				wordsL2[i] = STYLE_ONE_TRANSLATION.replace("{replace}", arr_t.get(0).getString());
 			else
-				wordsL2[i] = STYLE_MULTI_TRANSLATION.replace("{replace}", arr_t.get(0).getString()).replace("{replace_2}",
-						words[i]);
+				wordsL2[i] = STYLE_MULTI_TRANSLATION.replace("{replace}", arr_t.get(0).getString())
+						.replace("{replace_2}", words[i]);
 
 			if (wordL1_exists)
 				wordsL1[i] = STYLE_L1_LINK.replace("{replace}", words[i]);
